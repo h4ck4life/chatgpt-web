@@ -70,8 +70,8 @@ export default function Main() {
   return (
     <>
       <Head>
-        <title>ChatGPT Web</title>
-        <meta name="description" content="ChatGPT alternative web client" />
+        <title>ChatGPT alternative</title>
+        <meta name="description" content="ChatGPT alternative alternative client" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
