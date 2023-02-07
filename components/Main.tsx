@@ -30,6 +30,9 @@ export default function Main() {
     const input = document.getElementById(
       "user_input_text"
     ) as HTMLTextAreaElement;
+
+    if(input.value === "") return;
+    
     const conversation = document.getElementById(
       "conversation"
     ) as HTMLDivElement;
@@ -53,7 +56,7 @@ export default function Main() {
       newMessage.className = "border-gray-100 bg-gray-50 rounded-md rounded mb-2 border p-3 text-cyan-700";
       const newMessageText = document.createElement("span");
       newMessageText.className = "";
-      newMessageText.innerText = data.response!;
+      newMessageText.innerText = data.error || data.response!;
       newMessage.appendChild(newMessageText);
       conversation.appendChild(newMessage);
 
@@ -88,10 +91,10 @@ export default function Main() {
           ></textarea>
           <button
             onClick={getAnswer}
-            className="bg-cyan-500 hover:bg-cyan-700 text-white w-full font-bold py-2 px-4 rounded-md"
+            className={isLoading ? "bg-gray-500 hover:bg-gray-700 text-white w-full font-bold py-2 px-4 rounded-md" : "bg-cyan-500 hover:bg-cyan-700 text-white w-full font-bold py-2 px-4 rounded-md"}
             disabled={isLoading}
           >
-            Send
+            {isLoading ? "Loading..." : "Send"}
           </button>
         </div>
       </div>
