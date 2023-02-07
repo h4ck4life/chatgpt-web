@@ -37,7 +37,7 @@ export default function Main() {
       "conversation"
     ) as HTMLDivElement;
     const newMessage = document.createElement("div");
-    newMessage.className = "border-gray-100 bg-gray-50 rounded-md rounded mb-2 border p-3";
+    newMessage.className = "border-gray-100 bg-gray-50 rounded-md rounded shadow-sm mb-2 border p-3";
     const newMessageText = document.createElement("span");
     newMessageText.className = "";
     newMessageText.innerText = input.value;
@@ -53,7 +53,7 @@ export default function Main() {
     };
     callChatGPT(chatRequest).then((data) => {
       const newMessage = document.createElement("div");
-      newMessage.className = "border-gray-100 bg-gray-50 rounded-md rounded mb-2 border p-3 text-cyan-700";
+      newMessage.className = "border-gray-100 bg-gray-50 rounded-md rounded shadow-sm mb-2 border p-3 text-cyan-700";
       const newMessageText = document.createElement("span");
       newMessageText.className = "";
       newMessageText.innerText = data.error || data.response!;
@@ -77,7 +77,7 @@ export default function Main() {
       </Head>
       <div className="mt-1 p-3 container mx-auto">
         <div id="conversation" className="overflow-scroll">
-          <div className="border-gray-100 bg-gray-50 rounded-md mb-2 border p-3">
+          <div className="border-gray-100 bg-gray-50 rounded-md shadow-sm mb-2 border p-3">
             <span className="">Hello, welcome.</span>
           </div>
         </div>
