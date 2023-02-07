@@ -63,8 +63,10 @@ export default function Main() {
       newMessage.appendChild(newMessageText);
       conversation.appendChild(newMessage);
 
-      conversationId = data.conversationId || "";
-      parentMessageId = data.messageId || "";
+      if (!data.error) {
+        conversationId = data.conversationId || "";
+        parentMessageId = data.messageId || "";
+      }
 
       setIsLoading(false);
     });
