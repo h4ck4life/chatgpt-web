@@ -2,6 +2,7 @@ import { ChatRequest } from "@/interfaces/ChatRequest";
 import { ChatResponse } from "@/interfaces/ChatResponse";
 import Head from "next/head";
 import { useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 
 let conversationId = "";
 let parentMessageId = "";
@@ -31,13 +32,14 @@ export default function Main() {
       "user_input_text"
     ) as HTMLTextAreaElement;
 
-    if(input.value === "") return;
-    
+    if (input.value === "") return;
+
     const conversation = document.getElementById(
       "conversation"
     ) as HTMLDivElement;
     const newMessage = document.createElement("div");
-    newMessage.className = "border-gray-100 bg-gray-50 rounded-md rounded shadow-sm mb-2 border p-3";
+    newMessage.className =
+      "border-gray-100 bg-gray-50 rounded-md rounded shadow-sm mb-2 border p-3";
     const newMessageText = document.createElement("span");
     newMessageText.className = "";
     newMessageText.innerText = input.value;
@@ -53,7 +55,8 @@ export default function Main() {
     };
     callChatGPT(chatRequest).then((data) => {
       const newMessage = document.createElement("div");
-      newMessage.className = "border-gray-100 bg-gray-50 rounded-md rounded shadow-sm mb-2 border p-3 text-cyan-700";
+      newMessage.className =
+        "border-gray-100 bg-gray-50 rounded-md rounded shadow-sm mb-2 border p-3 text-cyan-700";
       const newMessageText = document.createElement("span");
       newMessageText.className = "";
       newMessageText.innerText = data.error || data.response!;
@@ -71,7 +74,10 @@ export default function Main() {
     <>
       <Head>
         <title>ChatGPT alternative</title>
-        <meta name="description" content="ChatGPT alternative alternative client" />
+        <meta
+          name="description"
+          content="ChatGPT alternative alternative client"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -91,10 +97,26 @@ export default function Main() {
           ></textarea>
           <button
             onClick={getAnswer}
-            className={isLoading ? "bg-gray-500 text-white w-full font-bold py-2 px-4 rounded-md" : "bg-cyan-500 hover:bg-cyan-700 text-white w-full font-bold py-2 px-4 rounded-md"}
+            className={
+              isLoading
+                ? "bg-gray-500 text-white w-full font-bold py-2 px-4 rounded-md text-center"
+                : "bg-cyan-500 hover:bg-cyan-700 text-white w-full font-bold py-2 px-4 rounded-md"
+            }
             disabled={isLoading}
           >
-            {isLoading ? "Loading..." : "Send"}
+            {isLoading ? (
+              <ThreeDots
+                height="32"
+                width="32"
+                radius="9"
+                color="#fff"
+                ariaLabel="three-dots-loading"
+                visible={true}
+                wrapperClass="flex justify-center"
+              />
+            ) : (
+              "Send"
+            )}
           </button>
         </div>
       </div>
