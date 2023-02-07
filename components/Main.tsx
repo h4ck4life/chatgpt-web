@@ -91,7 +91,7 @@ export default function Main() {
           ></textarea>
           <button
             onClick={getAnswer}
-            className={isLoading ? "bg-gray-500 hover:bg-gray-700 text-white w-full font-bold py-2 px-4 rounded-md" : "bg-cyan-500 hover:bg-cyan-700 text-white w-full font-bold py-2 px-4 rounded-md"}
+            className={isLoading ? "bg-gray-500 text-white w-full font-bold py-2 px-4 rounded-md" : "bg-cyan-500 hover:bg-cyan-700 text-white w-full font-bold py-2 px-4 rounded-md"}
             disabled={isLoading}
           >
             {isLoading ? "Loading..." : "Send"}
