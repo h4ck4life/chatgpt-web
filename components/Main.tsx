@@ -34,7 +34,7 @@ export default function Main() {
       "conversation"
     ) as HTMLDivElement;
     const newMessage = document.createElement("div");
-    newMessage.className = "border-gray-100 rounded mb-2 border p-3";
+    newMessage.className = "border-gray-100 bg-gray-50 rounded-md rounded mb-2 border p-3";
     const newMessageText = document.createElement("span");
     newMessageText.className = "";
     newMessageText.innerText = input.value;
@@ -50,7 +50,7 @@ export default function Main() {
     };
     callChatGPT(chatRequest).then((data) => {
       const newMessage = document.createElement("div");
-      newMessage.className = "border-gray-100 rounded mb-2 border p-3";
+      newMessage.className = "border-gray-100 bg-gray-50 rounded-md rounded mb-2 border p-3 text-cyan-700";
       const newMessageText = document.createElement("span");
       newMessageText.className = "";
       newMessageText.innerText = data.response!;
@@ -74,7 +74,7 @@ export default function Main() {
       </Head>
       <div className="mt-1 p-3 container mx-auto">
         <div id="conversation" className="overflow-scroll">
-          <div className="border-gray-100 rounded mb-2 border p-3">
+          <div className="border-gray-100 bg-gray-50 rounded-md mb-2 border p-3">
             <span className="">Hello, welcome.</span>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function Main() {
           ></textarea>
           <button
             onClick={getAnswer}
-            className="bg-blue-500 hover:bg-blue-700 text-white w-full font-bold py-2 px-4 rounded"
+            className="bg-cyan-500 hover:bg-cyan-700 text-white w-full font-bold py-2 px-4 rounded-md"
             disabled={isLoading}
           >
             Send
